@@ -1,5 +1,5 @@
 extends SpatialManipulator
-class_name FreeLookKinematicMover
+class_name FreeLookMover
 
 
 export var LINEAR_SPEED_MPS = 3
