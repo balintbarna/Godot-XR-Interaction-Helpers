@@ -6,9 +6,7 @@ signal new_mapping_set
 
 const MOUSE_ROTATION_MULTIPLIER = 10
 var mouse_motion_buffer = Vector2()
-var vr_origin: ARVROrigin
-var left_vr_controller: ARVRController
-var right_vr_controller: ARVRController
+var vr_origin: ArvrOriginWithReferences
 var mapping = BaseMapping.new() setget set_mapping, get_mapping
 func set_mapping(value):
     mapping = value
@@ -18,13 +16,15 @@ func get_mapping():
 
 
 func _init():
-    vr_origin = ARVROrigin.new()
-    left_vr_controller = ARVRController.new()
+    vr_origin = ArvrOriginWithReferences.new()
+    var left_vr_controller = ARVRController.new()
     left_vr_controller.controller_id = 1
     vr_origin.add_child(left_vr_controller)
-    right_vr_controller = ARVRController.new()
+    var right_vr_controller = ARVRController.new()
     right_vr_controller.controller_id = 2
     vr_origin.add_child(right_vr_controller)
+    var hmd = ARVRCamera.new()
+    vr_origin.add_child(hmd)
     add_child(vr_origin)
 
 
@@ -36,8 +36,8 @@ func _physics_process(_delta):
 
 func create_move_action():
     if is_arvr():
-        var leftright = left_vr_controller.get_joystick_axis(mapping.STICK_X) # [-1; 1]
-        var backforward = left_vr_controller.get_joystick_axis(mapping.STICK_Y) # [-1; 1]
+        var leftright = vr_origin.left.get_joystick_axis(mapping.STICK_X) # [-1; 1]
+        var backforward = vr_origin.left.get_joystick_axis(mapping.STICK_Y) # [-1; 1]
         var vector = Vector2(leftright, backforward) # (X, Y)
         set_vector("movement_left", "movement_right", "movement_back", "movement_forward", vector)
 
@@ -45,7 +45,7 @@ func create_move_action():
 func create_rotation_action():
     var yaw = 0
     if is_arvr():
-        yaw = right_vr_controller.get_joystick_axis(mapping.STICK_X)
+        yaw = vr_origin.right.get_joystick_axis(mapping.STICK_X)
     else:
         var vp_size = get_viewport().size
         yaw = MOUSE_ROTATION_MULTIPLIER * mouse_motion_buffer.x / vp_size.x
