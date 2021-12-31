@@ -5,3 +5,5 @@ This addon contains helper classes and example scenes for common XR related chal
 Dependencies:
 - Extra Math for GDScript
 - some kind of VR runtime, such as OpenXR
+
+Ensure that the `InputMapper` script in the autoload folder has been activated in the project settings as an AutoLoad
