@@ -1,4 +1,4 @@
-extends Spatial
+extends SpatialManipulator
 class_name KinematicBodyManipulator
 
 
