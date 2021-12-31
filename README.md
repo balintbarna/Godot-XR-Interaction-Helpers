@@ -1,3 +1,3 @@
-# Godot-Extra-Math-Plugin
+# Godot XR Interaction Helpers Addon
 
-A plugin that contains helper classes and example scenes for common XR related challenges, such as movement with collisions, rotation around camera, grab, touch, etc.
+See more in the [Addon README](addons/xr-helpers/README.md)
