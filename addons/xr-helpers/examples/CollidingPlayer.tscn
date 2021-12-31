@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://addons/xr-helpers/examples/Ball.tres" type="SphereMesh" id=1]
+[ext_resource path="res://addons/xr-helpers/features/ReferenceOffsetCompensatingRotator.gd" type="Script" id=2]
+[ext_resource path="res://addons/xr-helpers/features/VrFrameHeightScaler.gd" type="Script" id=3]
+[ext_resource path="res://addons/xr-helpers/other/ArvrOriginWithReferences.gd" type="Script" id=4]
+[ext_resource path="res://addons/xr-helpers/features/FlatWorldPhysicsKinematicMover.gd" type="Script" id=5]
+[ext_resource path="res://addons/xr-helpers/features/TripleMethodOrientationGuesser.gd" type="Script" id=6]
+[ext_resource path="res://addons/xr-helpers/examples/PlayerCollision.gd" type="Script" id=7]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.2
+height = 1.6
+
+[node name="Player" type="KinematicBody"]
+
+[node name="ARVROrigin" type="ARVROrigin" parent="."]
+script = ExtResource( 4 )
+
+[node name="ARVRCamera" type="ARVRCamera" parent="ARVROrigin"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0 )
+
+[node name="RemoteTransform" type="RemoteTransform" parent="ARVROrigin/ARVRCamera"]
+remote_path = NodePath("../../../PlayerCollision")
+update_rotation = false
+update_scale = false
+
+[node name="ARVRControllerLeft" type="ARVRController" parent="ARVROrigin"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5 )
+
+[node name="MeshInstance" type="MeshInstance" parent="ARVROrigin/ARVRControllerLeft"]
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="ARVRControllerRight" type="ARVRController" parent="ARVROrigin"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5 )
+controller_id = 2
+
+[node name="MeshInstance" type="MeshInstance" parent="ARVROrigin/ARVRControllerRight"]
+mesh = ExtResource( 1 )
+material/0 = null
+
+[node name="Rotator" type="Spatial" parent="."]
+script = ExtResource( 2 )
+
+[node name="PlayerCollision" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.8, 0 )
+shape = SubResource( 1 )
+script = ExtResource( 7 )
+
+[node name="HeightScaler" type="Spatial" parent="PlayerCollision"]
+script = ExtResource( 3 )
+origin_path = NodePath("../../ARVROrigin")
+
+[node name="Mover" type="Spatial" parent="."]
+script = ExtResource( 5 )
+
+[node name="Spatial" type="Spatial" parent="Mover"]
+script = ExtResource( 6 )
+origin_path = NodePath("../../ARVROrigin")
