@@ -8,6 +8,76 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "SpatialManipulator",
+"class": "ArvrBodyManipulator",
+"language": "GDScript",
+"path": "res://addons/xr-helpers/other/ArvrManipulator.gd"
+}, {
+"base": "ARVROrigin",
+"class": "ArvrOriginWithReferences",
+"language": "GDScript",
+"path": "res://addons/xr-helpers/other/ArvrOriginWithReferences.gd"
+}, {
+"base": "Resource",
+"class": "BaseMapping",
+"language": "GDScript",
+"path": "res://addons/xr-helpers/other/BaseMapping.gd"
+}, {
+"base": "Reference",
+"class": "ExtraMath",
+"language": "GDScript",
+"path": "res://addons/extra_math_gd/ExtraMath.gd"
+}, {
+"base": "KinematicBodyManipulator",
+"class": "FlatWorldPhysicsKinematicMover",
+"language": "GDScript",
+"path": "res://addons/xr-helpers/features/FlatWorldPhysicsKinematicMover.gd"
+}, {
+"base": "SpatialManipulator",
+"class": "FreeLookMover",
+"language": "GDScript",
+"path": "res://addons/xr-helpers/features/FreeLookMover.gd"
+}, {
+"base": "SpatialManipulator",
+"class": "KinematicBodyManipulator",
+"language": "GDScript",
+"path": "res://addons/xr-helpers/other/KinematicBodyManipulator.gd"
+}, {
+"base": "SpatialManipulator",
+"class": "ReferenceOffsetCompensatingRotator",
+"language": "GDScript",
+"path": "res://addons/xr-helpers/features/ReferenceOffsetCompensatingRotator.gd"
+}, {
+"base": "Spatial",
+"class": "SpatialManipulator",
+"language": "GDScript",
+"path": "res://addons/xr-helpers/other/SpatialManipulator.gd"
+}, {
+"base": "ArvrBodyManipulator",
+"class": "TripleMethodOrientationGuesser",
+"language": "GDScript",
+"path": "res://addons/xr-helpers/features/TripleMethodOrientationGuesser.gd"
+}, {
+"base": "ArvrBodyManipulator",
+"class": "VrFrameHeightScaler",
+"language": "GDScript",
+"path": "res://addons/xr-helpers/features/VrFrameHeightScaler.gd"
+} ]
+_global_script_class_icons={
+"ArvrBodyManipulator": "",
+"ArvrOriginWithReferences": "",
+"BaseMapping": "",
+"ExtraMath": "",
+"FlatWorldPhysicsKinematicMover": "",
+"FreeLookMover": "",
+"KinematicBodyManipulator": "",
+"ReferenceOffsetCompensatingRotator": "",
+"SpatialManipulator": "",
+"TripleMethodOrientationGuesser": "",
+"VrFrameHeightScaler": ""
+}
+
 [application]
 
 config/name="Godot-XR-Interaction-Helpers"
