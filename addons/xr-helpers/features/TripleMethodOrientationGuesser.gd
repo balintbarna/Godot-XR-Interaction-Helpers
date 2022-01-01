@@ -8,7 +8,7 @@ func _physics_process(_delta):
 
 func apply_orientation(target: Spatial):
     var old_scale = target.scale
-    target.global_transform.basis = get_compound_frame(target.global_transform.origin)
+    target.global_transform.basis = get_compound_frame(self.global_transform.origin)
     target.scale = old_scale
 
 
@@ -51,8 +51,8 @@ func get_origin_frame():
 
 
 func is_head_upright():
-    return get_head().is_upright()
+    return get_head().transform.basis.y.y > 0
 
 
 func get_head_forward_direction():
-    return get_head().get_forward_direction()
+    return -get_head().global_transform.basis.z.normalized()
