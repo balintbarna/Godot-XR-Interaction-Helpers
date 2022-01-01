@@ -30,6 +30,11 @@ remote_path = NodePath("../../../Mover/Orientator")
 update_rotation = false
 update_scale = false
 
+[node name="RemoteTransform3" type="RemoteTransform" parent="ARVROrigin/ARVRCamera"]
+remote_path = NodePath("../../../Rotator")
+update_rotation = false
+update_scale = false
+
 [node name="ARVRControllerLeft" type="ARVRController" parent="ARVROrigin"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5 )
 
@@ -46,6 +51,7 @@ mesh = ExtResource( 1 )
 material/0 = null
 
 [node name="Rotator" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0 )
 script = ExtResource( 2 )
 
 [node name="PlayerCollision" type="CollisionShape" parent="."]
