@@ -1,6 +1,8 @@
-# XR Interaction Helpers
+# Plug-and-Play XR features
 
 This addon contains helper classes and example scenes for common XR related challenges. Currently it supports movement with or without collisions and physics, rotation of player around camera, setting orientation intuitively based on a combination of head orientation and hands position. Future version will add grab, touch, climbing, space physics, etc.
+
+## Setup
 
 Dependencies:
 - Extra Math for GDScript
@@ -8,9 +10,9 @@ Dependencies:
 
 Ensure that the `InputMapper` script in the autoload folder has been activated in the project settings as an AutoLoad
 
-Check the `examples` folder for inspiration on how to use the scripts in this addon to build your VR scene.
+Check the *examples* folder for inspiration on how to use the scripts in this addon to build your VR scene.
 
-### Feature Nodes
+## Feature Nodes
 
 `ReferenceOffsetCompensatingRotator`
 - Rotates parent node
